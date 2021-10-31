@@ -44,6 +44,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ItemViewHolder>() {
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textView1: TextView
         private val textView2: TextView
+        private val recyclerView2: RecyclerView
         fun onBind(item: itemlist) {
             textView1.setText(item.id)
 //            textView2.setText(yong.aop.aop.retrofitjsonkotlin.Item.body)
@@ -54,6 +55,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ItemViewHolder>() {
         }
 
         init {
+            recyclerView2 = itemView.findViewById(R.id.recyclerView1)
             textView1 = itemView.findViewById(R.id.textView1)
             textView2 = itemView.findViewById(R.id.textView2)
         }

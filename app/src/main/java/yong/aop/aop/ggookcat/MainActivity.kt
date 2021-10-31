@@ -25,11 +25,13 @@ class MainActivity : AppCompatActivity() {
 
 
         val recyclerView1 = findViewById<View>(R.id.recyclerView1) as RecyclerView
+//        val recyclerView2 = findViewById<View>(R.id.recyclerView2) as RecyclerView
         val linearLayoutManager = LinearLayoutManager(this)
         recyclerView1.layoutManager = linearLayoutManager
-
+//        recyclerView2.layoutManager = linearLayoutManager
         adapter = RecyclerAdapter()
         recyclerView1.adapter = adapter
+//        recyclerView2.adapter = adapter
 
         adapter!!.setItemClickListener (object: RecyclerAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
@@ -50,10 +52,12 @@ class MainActivity : AppCompatActivity() {
         retrofitAPI.getData().enqueue(object : Callback<cat> {
             override fun onResponse(call: Call<cat>, response: Response<cat>) {
                 if (response.isSuccessful) {
-                                        Log.d("TEST", response.body()!!.domeggook!!.items!!.item!!.a1!!)
+                                        Log.d("TEST",
+                                            response.body()!!.domeggook!!.items!!.item!!.itemlist!!.id.toString()
+                                        )
                     for(i in 0 until 5 step 1){
                         val item = itemlist()
-//                        item.id==response.body().toString()
+                        item.id==response.body()!!.domeggook!!.items!!.item!!.itemlist!!.id.toString()
                         adapter!!.addItem(item)
                         adapter!!.notifyDataSetChanged()
                     }
